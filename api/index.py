@@ -13,10 +13,13 @@ def index():
     
     if encoding is None:
         encoding = 'cl100k_base'  
-
     
     encoder = tiktoken.get_encoding(encoding)
     num_tokens = len(encoder.encode(string))
 
-    return f'"{string}" is {num_tokens} tokens long (encoding: {encoding})'
+    return {
+        'string': string,
+        'encoding': encoding,
+        'num_tokens': num_tokens
+    }
 
