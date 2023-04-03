@@ -5,12 +5,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    string = request.args.get('string')
+    encoding = request.args.get('encoding')
     
-
-    string = "This is a test for token count"
-    encoding_name = "cl100k_base"
-
-    encoding = tiktoken.get_encoding(encoding_name)
-    num_tokens = len(encoding.encode(string))
-    return str(num_tokens).encode('utf-8')
+    encoder = tiktoken.get_encoding(encoding)
+    num_tokens = len(encoder.encode(string))
+    
+    return str(num_tokens)
 
