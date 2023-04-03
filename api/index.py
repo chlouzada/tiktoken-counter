@@ -4,8 +4,8 @@ import tiktoken
 class handler(BaseHTTPRequestHandler):
  
     def do_GET(self):
-        string = self.path.split('?')[1].split('=')[1]
-        encoding_name = self.path.split('?')[2].split('=')[1]
+        string = "This is a test for token count"
+        encoding_name = "cl100k_base"
 
         encoding = tiktoken.get_encoding(encoding_name)
         num_tokens = len(encoding.encode(string))
